@@ -2,28 +2,36 @@ package livraria;
 
 import java.util.ArrayList;
 
-public class livraria {
+public class Livraria {
     
-public ArrayList<livro> livros;
+    public ArrayList<Livro> livros;
 
-public livraria (){
-    this.livros = new ArrayList<>();
-}
+    public Livraria(){
+        this.livros = new ArrayList<>();
+    }
 
-public void cadastrarlivro ( livro livro){
-    this.livros.add(livro);
+    public void cadastrarLivro(Livro livro){
+        this.livros.add(livro);
+    }
 
-}
+    public String listarLivros(){
+        String listaLivros = "";
+        for (Livro l : this.livros) {
+            listaLivros += l.id + " - " + l.titulo + "\n";
+        }
+        return listaLivros;
+    }
 
-public String listarlivros(){
-String listalivros = "";
+    public String detalharLivroPorId(int id){
+        String detalheLivro = "Livro não encontrado.\n";
 
-for( livro l : this.livros) {
+        for (Livro livro : livros) {
+            if (livro.id == id){
+                detalheLivro = livro.toString();
+            }
+        }
 
-    listalivros += l.id + " - " + l.titulo + "\n";
-
-}
-return listalivros;
-}
+        return detalheLivro;
+    }
 
 }
